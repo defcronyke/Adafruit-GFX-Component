@@ -1,11 +1,22 @@
 #ifndef _ADAFRUIT_GFX_H
 #define _ADAFRUIT_GFX_H
 
+/** Contains slight modifications by:
+      2021 Jeremy Carter <jeremy@jeremycarter.ca>
+*/
+
 #if ARDUINO >= 100
 #include "Arduino.h"
 #include "Print.h"
 #else
+#ifdef ESP32_IDF
+#include <stdint.h>
+#include <cstring>
+#include <cstdlib>
+#include "Print.h"
+#else
 #include "WProgram.h"
+#endif
 #endif
 #include "gfxfont.h"
 
@@ -178,7 +189,7 @@ public:
   void cp437(bool x = true) { _cp437 = x; }
 
   using Print::write;
-#if ARDUINO >= 100
+#if ARDUINO >= 100 || ESP32_IDF
   virtual size_t write(uint8_t);
 #else
   virtual void write(uint8_t);
