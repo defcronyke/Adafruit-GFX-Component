@@ -2,6 +2,7 @@ idf_component_register(
     SRCS
         "Adafruit_GFX.cpp"
         "glcdfont.c"
+        "Print.cpp"
     
     INCLUDE_DIRS
         "."

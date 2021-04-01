@@ -25,11 +25,16 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
+#ifndef ESP32_IDF
 #include "Arduino.h"
+#endif
 
 #include "Print.h"
 extern "C" {
     #include "time.h"
+    #ifdef ESP32_IDF
+    #include "stdarg.h"
+    #endif
 }
 
 // Public Methods //////////////////////////////////////////////////////////////
